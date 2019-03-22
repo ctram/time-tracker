@@ -12,8 +12,10 @@ export class App extends React.Component {
                     <Navbar />
                 </div>
                 <div>
-                    <Route path="/login" exact component={PageLogin} />
-                    <Route path="/home" exact component={PageHome} />
+                    <Route path="/" component={PageLogin} />
+                    {/*
+                        <Route path="/home" exact component={PageHome} />
+                    */}
                 </div>
             </Router>
         );
