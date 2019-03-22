@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginForm } from '../components/login-form';
-import URLS from '../constants/urls';
+import * as URLS from '../constants/urls';
 
 export class PageLogin extends React.Component {
     constructor(props) {
