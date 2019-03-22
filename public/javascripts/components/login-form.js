@@ -3,18 +3,37 @@ import React from 'react';
 export class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loginError: false };
+
+        this.form = React.createRef();
+
+        this.state = {
+            loginError: false,
+            isValid: false,
+            submittedOnce: false,
+            email: '',
+            password: ''
+        };
 
         this.login = this.login.bind(this);
     }
 
     login() {
-        this.props.handleLogin(this.state);
+        const { email, password } = this.state;
+
+        this.setState({ submittedOnce: true }, () => {
+            if (this.form.current.checkValidity()) {
+                this.props.handleLogin({ email, password });
+            }
+        });
     }
 
     render() {
+        const { submittedOnce } = this.state;
+
+        const formClass = submittedOnce ? 'was-validated' : '';
+
         return (
-            <form>
+            <form className={formClass} id="my-form" ref={this.form}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
@@ -23,6 +42,9 @@ export class LoginForm extends React.Component {
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                         placeholder="Enter email"
+                        onChange={e => {
+                            this.setState({ email: e.target.value });
+                        }}
                         required
                     />
                     <small id="emailHelp" className="form-text text-muted">
@@ -36,6 +58,9 @@ export class LoginForm extends React.Component {
                         className="form-control"
                         id="exampleInputPassword1"
                         placeholder="Password"
+                        onChange={e => {
+                            this.setState({ password: e.target.value });
+                        }}
                         required
                     />
                 </div>
