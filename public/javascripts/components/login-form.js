@@ -1,6 +1,20 @@
 import React from 'react';
 
 export class LoginForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { loginError: false };
+
+        this.login = this.login.bind(this);
+    }
+
+    login() {
+        const { email, password } = this.state;
+
+        const request = new Request()
+    }
+
     render() {
         return <form>
             <div className="form-group">
@@ -12,7 +26,7 @@ export class LoginForm extends React.Component {
                 <label htmlFor="exampleInputPassword1">Password</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+            <button onClick={this.login} type="submit" className="btn btn-primary">Submit</button>
+        </form>;
     }
 }
