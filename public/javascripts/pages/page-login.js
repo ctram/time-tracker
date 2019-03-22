@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginForm } from '../components/login-form';
-import * as URLS from '../constants/urls';
+import { urls } from '../constants/urls';
 
 export class PageLogin extends React.Component {
     constructor(props) {
@@ -9,9 +9,9 @@ export class PageLogin extends React.Component {
     }
 
     login({ email, password }) {
-        fetch(URLS.host, {
+        fetch('http://localhost:3000/hoo', {
             method: 'POST',
-            body: { email, password }
+            body: JSON.stringify({ email, password })
         }).then(res => {
             debugger;
         });
