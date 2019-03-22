@@ -1,3 +1,3 @@
-export HOST_URL = 'localhost:3000';
-
-export URLS 
+export const URLS = {
+    host: 'localhost:3000'
+};
