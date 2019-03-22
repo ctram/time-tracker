@@ -1,8 +1,6 @@
 import React from 'react';
-import URLS from '../constants/urls';
 
 export class LoginForm extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = { loginError: false };
@@ -11,12 +9,7 @@ export class LoginForm extends React.Component {
     }
 
     login() {
-        const { email, password } = this.state;
-
-        const request = new Request()
-
-
-        fetch(URLS.)
+        this.props.handleLogin(this.state);
     }
 
     render() {
