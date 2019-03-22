@@ -22,11 +22,20 @@ export class Navbar extends React.Component {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
+
                         <li className="nav-item">
-                            <Link to="/home">Home</Link>
+                            <Link to="/home">
+                                <a className="nav-link">
+                                    Home
+                                </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/login">Login</Link>
+                            <Link to="/login">
+                                <a className="nav-link">
+                                    Login
+                                </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
