@@ -64,7 +64,7 @@ export class LoginForm extends React.Component {
                         required
                     />
                 </div>
-                <button onClick={this.login} type="submit" className="btn btn-primary">
+                <button onClick={this.login} type="button" className="btn btn-primary">
                     Submit
                 </button>
             </form>
