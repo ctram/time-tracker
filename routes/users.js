@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/', function (req, res, next) {
-    console.log('post users /post users /post users /post users /post users /post users /');
+router.post('/', function(req, res, next) {
+    const { email, password } = req.body;
+    console.log(req.body);
     res.send('respond with a resource');
 });
 
