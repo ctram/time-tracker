@@ -11,7 +11,10 @@ export class PageSignUp extends React.Component {
     signUp({ email, password }) {
         fetch('http://localhost:3000/users', {
             method: 'POST',
-            body: JSON.stringify({ email, password })
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({ email: email, password: password })
         }).then(res => {
             debugger;
         });
