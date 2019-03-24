@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "root",
+    "username": null,
     "password": null,
     "database": "time_tracker",
     "host": "127.0.0.1",
