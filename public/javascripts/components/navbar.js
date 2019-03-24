@@ -32,6 +32,11 @@ export class Navbar extends React.Component {
                                 Login
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/sign-up" className="nav-link">
+                                Sign Up
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
