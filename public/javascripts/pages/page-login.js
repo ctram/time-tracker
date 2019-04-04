@@ -18,9 +18,9 @@ export class PageLogin extends React.Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center flex-column align-items-center pt-5">
-                <h4>Login In</h4>
-                <LoginForm handleLogin={this.login} />
+            <div className="d-flex align-items-center flex-column">
+                <h3>Login</h3>
+                <LoginForm handleSubmission={this.login} />
             </div>
         );
     }

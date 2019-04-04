@@ -15,7 +15,10 @@ router.post('/users', function (req, res, next) {
 
   console.log(`users request ${email + ' ' + password}`);
 
-  res.send('respond with a resource');
+router.post('/', function(req, res, next) {
+    const { email, password } = req.body;
+    console.log(req.body);
+    res.send('respond with a resource');
 });
 
 module.exports = router;

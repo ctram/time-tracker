@@ -7,9 +7,4 @@ router.get(/.*/, function (req, res, next) {
     res.redirect('/');
 });
 
-router.post(/.*/, function (req, res, next) {
-    console.log('POST POST POST POST');
-    res.redirect('/');
-});
-
 module.exports = router;

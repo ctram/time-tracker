@@ -3,25 +3,27 @@ import { LoginForm } from '../components/login-form';
 import { urls } from '../constants/urls';
 
 export class PageSignUp extends React.Component {
-
     constructor(props) {
         super(props);
-
-        this.signUp = this.signUp.bind(this);
+        this.state = { email: null, password: null };
     }
 
     signUp({ email, password }) {
-        debugger;
-        fetch(urls.users, {
+        fetch('http://localhost:3000/users', {
             method: 'POST',
-            body: JSON.stringify({ email, password })
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({ email: email, password: password })
+        }).then(res => {
+            debugger;
         });
     }
 
     render() {
         return (
-            <div className="d-flex flex-column justify-content-center pt-5 align-items-center">
-                <h4>Sign Up</h4>
+            <div className="d-flex flex-column align-items-center">
+                <h3>Sign Up</h3>
                 <LoginForm handleSubmission={this.signUp} />
             </div>
         );
