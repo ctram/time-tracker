@@ -22,7 +22,7 @@ export class LoginForm extends React.Component {
 
         this.setState({ submittedOnce: true }, () => {
             if (this.form.current.checkValidity()) {
-                this.props.handleLogin({ email, password });
+                this.props.handleSubmission({ email, password });
             }
         });
     }
