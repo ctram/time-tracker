@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
 
     User.create({ email, password })
         .then(user => {
-            res.json({ user });
+            res.status(201).json({ user });
         })
         .catch(err => {
             next({ message: err });
