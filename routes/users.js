@@ -7,7 +7,6 @@ router.post('/', function(req, res, next) {
 
     User.create({ email, password })
         .then(user => {
-            throw 'forced error';
             res.json({ user });
         })
         .catch(err => {
