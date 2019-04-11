@@ -21,7 +21,7 @@ router.post('/', function (req, res, next) {
             return res.status(201).json({ user });
         })
         .catch(error => {
-            next({ type: error.type, status: error.status, message: error.message });
+            next({ error });
         });
 });
 
