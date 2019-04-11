@@ -17,7 +17,7 @@ sequelize
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-// const loginRouter = require('./routes/login');
+const loginRouter = require('./routes/login');
 
 const app = express();
 
@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
 
 // if request path does not match any routes, then catch as a
 // 404 error and forward to error handler
@@ -42,13 +43,15 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+    let error = err.error || err;
+    
     // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.message = error.message;
+    res.locals.error = req.app.get('env') === 'development' ? error : {};
 
     // render the error page
-    res.status(err.status || 500);
-    res.json({ error: { message: err.message, type: err.type } });
+    res.status(error.status || 500);
+    res.json({ error: { message: error.message, type: error.type } });
 });
 
 module.exports = app;
