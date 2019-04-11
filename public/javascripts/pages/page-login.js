@@ -9,7 +9,7 @@ export class PageLogin extends React.Component {
     }
 
     login({ email, password }) {
-        fetch('http://localhost:3000/hoo', {
+        fetch('http://localhost:3000/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
         }).then(res => {
