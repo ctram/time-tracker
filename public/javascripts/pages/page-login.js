@@ -1,18 +1,22 @@
 import React from 'react';
 import { LoginForm } from '../components/login-form';
-import { urls } from '../constants/urls';
+import { fetchPlus } from '../helpers/fetch-plus';
 
 export class PageLogin extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = { email: null, password: null };
+
+        this.login = this.login.bind(this);
     }
 
     login({ email, password }) {
-        fetch('http://localhost:3000/login', {
+        fetchPlus('http://localhost:3000/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
         }).then(res => {
+            // TODO: here
         });
     }
 

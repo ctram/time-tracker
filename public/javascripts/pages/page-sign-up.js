@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoginForm } from '../components/login-form';
 import history from '../browser-history';
+import { fetchPlus } from '../helpers/fetch-plus';
 
 export class PageSignUp extends React.Component {
     constructor(props) {
@@ -14,11 +15,8 @@ export class PageSignUp extends React.Component {
     signUp({ email, password }) {
         let status = null;
 
-        fetch('http://localhost:3000/users', {
+        fetchPlus('http://localhost:3000/users', {
             method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
             body: JSON.stringify({ email: email, password: password })
         }).then(res => {
             status = res.status;
