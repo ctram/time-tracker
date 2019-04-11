@@ -12,6 +12,8 @@ export class PageSignUp extends React.Component {
     }
 
     signUp({ email, password }) {
+        let status = null;
+
         fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: new Headers({
@@ -19,13 +21,18 @@ export class PageSignUp extends React.Component {
             }),
             body: JSON.stringify({ email: email, password: password })
         }).then(res => {
-            if (res.status === 201) {
-                return history.push('/login');
-            }
+            status = res.status;
 
             return res.json()
         }).then(json => {
-            alert(`There was an error signing up: ${json.error}`);
+            if (status === 201) {
+                alert(`User created ${json.user}`);
+                return history.push('/login');
+            }
+
+            return Promise.reject(json.error.message || json.error.type);
+        }).catch(err => {
+            alert(`There was an error signing up: ${err}`);
         })
     }
 
