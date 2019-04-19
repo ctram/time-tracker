@@ -39,28 +39,32 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(
-    {
-        usernameField: 'email'
-    },
-    (username, password, done) => {
-        const email = username;
+passport.use(
+    new LocalStrategy(
+        {
+            usernameField: 'email'
+        },
+        (username, password, done) => {
+            const email = username;
 
-        User.findOne({ where: { email } })
-            .then(user => {
+            User.findOne({ where: { email } })
+                .then(user => {
+                    if (!user) {
+                        return done(null, false, { message: 'Incorrect username.' });
+                    }
 
+                    if (user.password !== password) {
+                        return done(null, false, { message: 'Incorrect password.' });
+                    }
 
-                if (!user) {
-                    return done(null, false, { message: 'Incorrect username.' });
-                }
-
-                if (user.password !== password) {
-                    return done(null, false, { message: 'Incorrect password.' });
-                }
-
-                return done(null, user);
-            })
-            .catch(err => {
+                    return done(null, user);
+                })
+                .catch(err => {
+                    return done(err);
+                });
+        }
+    )
+);
 
 
                 return done(err);
