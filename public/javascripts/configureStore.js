@@ -1,6 +1,10 @@
 import { applyMiddleware, createStore } from 'redux-starter-kit';
+import { applyMiddleware} from
 import thunkMiddleware from 'redux-thunk';
 import { rootReducer } from './reducers/index';
+
+// todo: here  
+
 
 export default function configureStore(preloadedState = { currentUser: null }) {
     const middlewares = [thunkMiddleware];
