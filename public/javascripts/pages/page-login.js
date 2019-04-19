@@ -15,9 +15,22 @@ export class PageLogin extends React.Component {
         fetchPlus('http://localhost:3000/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
-        }).then(res => {
-            // TODO: here
-        });
+        })
+            .then(res => {
+                if (res.status === 401) {
+                    throw Error('Incorrect Email or Password');
+                }
+
+                return res.json();
+            })
+            .then(json => {
+                alert('Successfully logged in.');
+                console.log(`User: ${json.user}`);
+            })
+            .catch(err => {
+                alert(err);
+                console.error(err);
+            });
     }
 
     render() {
