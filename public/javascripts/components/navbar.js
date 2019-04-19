@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 export class Navbar extends React.Component {
     render() {
+        let { currentUser } = this.props;
+
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#">
@@ -39,6 +41,8 @@ export class Navbar extends React.Component {
                         </li>
                     </ul>
                 </div>
+
+                {currentUser && <div className="current-user">{currentUser.firstName}</div>}
             </nav>
         );
     }
