@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const passport = require('passport')
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const indexRouter = require('./routes/index');
@@ -74,12 +74,12 @@ app.use('/login', loginRouter);
 
 // if request path does not match any routes, then catch as a
 // 404 error and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     let error = err.error || err;
 
     // set locals, only providing error in development
