@@ -66,11 +66,21 @@ passport.use(
     )
 );
 
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
 
-                return done(err);
-            });
-    }
-));
+passport.deserializeUser((id, done) => {
+    User.findByPk;
+
+    User.findByPk(id)
+        .then(user => {
+            done(null, user);
+        })
+        .catch(err => {
+            done(err);
+        });
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
