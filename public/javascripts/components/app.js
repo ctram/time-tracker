@@ -1,9 +1,15 @@
 import React from 'react';
+
+import store from '../store';
+
 import { Router, Route } from 'react-router-dom';
+
 import { Navbar } from './navbar';
+
 import { PageLogin } from '../pages/page-login';
 import { PageSignUp } from '../pages/page-sign-up';
 import { PageHome } from '../pages/page-home';
+
 import history from '../browser-history';
 
 export class App extends React.Component {

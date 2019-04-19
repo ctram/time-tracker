@@ -1,6 +1,12 @@
 import React from 'react';
+
 import { LoginForm } from '../components/login-form';
 import { fetchPlus } from '../helpers/fetch-plus';
+
+import { loginFailed, loginSuccessful } from '../actions/login';
+
+import store from '../store';
+const { dispatch } = store;
 
 export class PageLogin extends React.Component {
     constructor(props) {
@@ -12,6 +18,8 @@ export class PageLogin extends React.Component {
     }
 
     login({ email, password }) {
+        store.dispatch(requestLogin(email, password));
+
         fetchPlus('http://localhost:3000/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
@@ -26,10 +34,12 @@ export class PageLogin extends React.Component {
             .then(json => {
                 alert('Successfully logged in.');
                 console.log(`User: ${json.user}`);
+                dispatch(loginSuccessful(json.user));
             })
             .catch(err => {
                 alert(err);
                 console.error(err);
+                dispatch(loginFailed(err));
             });
     }
 
