@@ -1,6 +1,6 @@
 import React from 'react';
 
-import store from '../store';
+import configureStore from '../configureStore';
 
 import { Router, Route } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import { PageSignUp } from '../pages/page-sign-up';
 import { PageHome } from '../pages/page-home';
 
 import history from '../browser-history';
+
+const store = configureStore({ currentUser: null });
 
 export class App extends React.Component {
     render() {
