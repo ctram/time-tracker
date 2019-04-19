@@ -5,7 +5,7 @@ import { fetchPlus } from '../helpers/fetch-plus';
 
 import { loginFailed, loginSuccessful } from '../actions/login';
 
-import store from '../store';
+import store from '../configureStore';
 const { dispatch } = store;
 
 export class PageLogin extends React.Component {
