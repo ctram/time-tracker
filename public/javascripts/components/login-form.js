@@ -38,6 +38,7 @@ export class LoginForm extends React.Component {
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                         type="email"
+                        autocomplete="sample@example.com"
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
