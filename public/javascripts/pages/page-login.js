@@ -76,4 +76,4 @@ const PageLogin = connect(
     mapDispatchToProps
 )(PageLoginComponent);
 
-export default PageLogin;
+export { PageLogin };
