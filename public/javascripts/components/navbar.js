@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export class Navbar extends React.Component {
+export class NavbarComponent extends React.Component {
     render() {
         let { currentUser } = this.props;
 
@@ -47,3 +48,13 @@ export class Navbar extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        currentUser: state.users.currentUser
+    };
+};
+
+const Navbar = connect(mapStateToProps)(NavbarComponent);
+
+export { Navbar };
