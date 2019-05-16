@@ -18,20 +18,23 @@ export class PageSignUp extends React.Component {
         fetchPlus('http://localhost:3000/users', {
             method: 'POST',
             body: JSON.stringify({ email: email, password: password })
-        }).then(res => {
-            status = res.status;
-
-            return res.json()
-        }).then(json => {
-            if (status === 201) {
-                alert(`User created ${json.user}`);
-                return history.push('/login');
-            }
-
-            return Promise.reject(json.error.message || json.error.type);
-        }).catch(err => {
-            alert(`There was an error signing up: ${err}`);
         })
+            .then(res => {
+                status = res.status;
+
+                return res.json();
+            })
+            .then(json => {
+                if (status === 201) {
+                    alert(`User created ${json.user}`);
+                    return history.push('/login');
+                }
+
+                return Promise.reject(json.error.message || json.error.type);
+            })
+            .catch(err => {
+                alert(`There was an error signing up: ${err}`);
+            });
     }
 
     render() {
