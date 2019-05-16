@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-starter-kit';
 
-const userReducer = createReducer(
+const usersReducer = createReducer(
     { currentUser: null },
     {
         setCurrentUser: (state, action) => {
@@ -9,4 +9,4 @@ const userReducer = createReducer(
     }
 );
 
-export { userReducer };
+export { usersReducer };

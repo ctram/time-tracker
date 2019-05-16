@@ -1,11 +1,11 @@
 import thunkMiddleware from 'redux-thunk';
-import { userReducer } from './reducers/user';
+import { usersReducer } from './reducers/users';
 import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 
 const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
 const store = configureStore({
-    reducer: { user: userReducer },
+    reducer: { users: usersReducer },
     middleware,
     devTools: process.env.NODE_ENV !== 'production'
 });
