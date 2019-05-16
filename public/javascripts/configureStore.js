@@ -1,23 +1,13 @@
-import { applyMiddleware, createStore } from 'redux-starter-kit';
-import { applyMiddleware} from
 import thunkMiddleware from 'redux-thunk';
-import { rootReducer } from './reducers/index';
+import { userReducer } from './reducers/user';
+import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 
-// todo: here  
+const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
+const store = configureStore({
+    reducer: { user: userReducer },
+    middleware,
+    devTools: process.env.NODE_ENV !== 'production'
+});
 
-export default function configureStore(preloadedState = { currentUser: null }) {
-    const middlewares = [thunkMiddleware];
-    const middlewareEnhancer = applyMiddleware(...middlewares);
-
-    const enhancers = [middlewareEnhancer];
-    const composedEnhancers = composeWithDevTools(...enhancers);
-
-    const store = createStore(rootReducer, preloadedState, composedEnhancers);
-
-    if (process.env.NODE_ENV !== 'production' && module.hot) {
-        module.hot.accept('./reducers', () => store.replaceReducer(rootReducer));
-    }
-
-    return store;
-}
+export { store };
