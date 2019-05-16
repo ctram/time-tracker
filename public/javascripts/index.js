@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './components/app.js';
 import { Provider } from 'react-redux';
-import configureStore from './configureStore';
-
-const store = configureStore({ currentUser: null });
+import { store } from './configureStore.js';
 
 ReactDOM.render(
     <Provider store={store}>
