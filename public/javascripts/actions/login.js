@@ -1,9 +1,7 @@
 import { createAction } from 'redux-starter-kit';
 
-const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
-const LOGIN_FAILED = 'LOGIN_FAILED';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
-const loginSuccessful = createAction(LOGIN_SUCCESSFUL);
-const loginFailed = createAction(LOGIN_FAILED);
+const setCurrentUser = createAction(SET_CURRENT_USER);
 
-export { loginSuccessful, loginFailed };
+export { setCurrentUser };

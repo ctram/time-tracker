@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { LoginForm } from '../components/login-form';
 import { fetchPlus } from '../helpers/fetch-plus';
 
-import { loginFailed, loginSuccessful } from '../actions/login';
+import { setCurrentUser } from '../actions/login';
 
 class PageLoginComponent extends React.Component {
     constructor(props) {
@@ -63,10 +63,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loginSuccessful: user => {
-            dispatch(loginSuccessful(user));
-        },
-        loginFailed: err => {
-            dispatch(loginFailed(err));
+            dispatch(setCurrentUser(user));
         }
     };
 };
