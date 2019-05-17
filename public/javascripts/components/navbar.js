@@ -30,20 +30,24 @@ export class NavbarComponent extends React.Component {
                                 Home
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-link">
-                                Login
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/sign-up" className="nav-link">
-                                Sign Up
-                            </Link>
-                        </li>
+                        {!currentUser && (
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-link">
+                                    Login
+                                </Link>
+                            </li>
+                        )}
+                        {!currentUser && (
+                            <li className="nav-item">
+                                <Link to="/sign-up" className="nav-link">
+                                    Sign Up
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
 
-                {currentUser && <div className="current-user">{currentUser.firstName}</div>}
+                {currentUser && <div className="current-user">{currentUser.email}</div>}
             </nav>
         );
     }
