@@ -7,6 +7,8 @@ import { fetchPlus } from '../helpers/fetch-plus';
 
 import { setCurrentUser } from '../actions/login';
 
+import history from '../browser-history';
+
 class PageLoginComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -33,6 +35,9 @@ class PageLoginComponent extends React.Component {
             .then(json => {
                 alert('Successfully logged in.');
                 console.log(`User: ${json.user}`);
+
+                history.push('/home');
+
                 _this.props.loginSuccessful(json.user);
             })
             .catch(err => {
