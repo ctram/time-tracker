@@ -14,6 +14,10 @@ import { PageTimeLog } from '../pages/page-time-log';
 import history from '../browser-history';
 
 export class AppComponent extends React.Component {
+    componentDidMount() {
+        // TODO: ping server to get current user if current user is not available.
+    }
+
     render() {
         const { currentUser } = this.props;
 
