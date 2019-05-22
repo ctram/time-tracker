@@ -28,6 +28,8 @@ router.post('/', (req, res, next) => {
 router.get('/authenticate', (req, res, next) => {
     console.log('check-current-user');
     res.send('check current user!!!');
+
+    // TODO: send back user if logged in.
 });
 
 module.exports = router;
