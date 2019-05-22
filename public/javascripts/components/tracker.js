@@ -1,24 +1,34 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
-export class Tracker extends React.Component {
+export class TrackerComponent extends React.Component {
     render() {
         return (
             <div className="tracker d-flex align-items-center w-50">
-                <input className="form-control form-control-lg mr-3"/>
-                <i class="fas fa-play" />
+                <input className="form-control form-control-lg mr-3" />
+                <i class="fas fa-play" onClick={this.props.startTracking} /> //
             </div>
         );
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         currentUser: state.users.currentUser
-//     };
-// };
+// TODO: add state for whether you are currently tracking an entry
 
-// const Navbar = connect(mapStateToProps)(NavbarComponent);
+const mapStateToProps = state => {
+    return {
+        isTrackerRunning: state.tracker.isTrackerRunning
+    };
+};
 
-// export { Navbar };
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        startTracking: () => {}
+    };
+};
+
+const Tracker = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TrackerComponent);
+
+export { Tracker };
