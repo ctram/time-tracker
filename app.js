@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use(session({ secret: "cats" }));
+app.use(session({ secret: 'cats' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
