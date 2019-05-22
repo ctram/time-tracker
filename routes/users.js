@@ -38,7 +38,7 @@ router.get('/authenticate', (req, res, next) => {
         return res.status(200).json({ user });
     }
 
-    res.end();
+    res.status(401).end();
 });
 
 module.exports = router;
