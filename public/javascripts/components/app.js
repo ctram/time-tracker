@@ -55,7 +55,7 @@ export class AppComponent extends React.Component {
                 <div>
                     <Navbar />
                 </div>
-                <div>
+                <div className="pt-3">
                     <Route path="/login" component={PageLogin} />
                     <Route path="/sign-up" component={PageSignUp} />
                     {(currentUser && <Route path="/home" exact component={PageTimeLog} />) || (
