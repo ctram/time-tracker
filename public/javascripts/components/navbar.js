@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logOut } from '../actions/session';
+import history from '../browser-history';
 
 export class NavbarComponent extends React.Component {
     render() {
@@ -44,6 +46,13 @@ export class NavbarComponent extends React.Component {
                                 </Link>
                             </li>
                         )}
+                        {currentUser && (
+                            <li className="nav-item" onClick={this.props.logOut}>
+                                <Link to="/sign-out" className="nav-link">
+                                    Sign Out
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
 
@@ -59,6 +68,18 @@ const mapStateToProps = state => {
     };
 };
 
-const Navbar = connect(mapStateToProps)(NavbarComponent);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        logOut: () => {
+            dispatch(logOut());
+            history.push('/home');
+        }
+    };
+};
+
+const Navbar = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NavbarComponent);
 
 export { Navbar };
