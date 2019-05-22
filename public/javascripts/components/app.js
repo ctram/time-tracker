@@ -18,9 +18,8 @@ import { setCurrentUser } from '../actions/session';
 import history from '../browser-history';
 
 export class AppComponent extends React.Component {
-    componentDidMount() {
-        // TODO: ping server to get current user if current user is not available.
 
+    componentDidMount() {
         if (this.props.currentUser) {
             return;
         }
@@ -32,7 +31,7 @@ export class AppComponent extends React.Component {
         })
             .then(res => {
                 if (res.status === 401) {
-                    throw Error('Not logged in.');
+                    throw Error('User not logged in.');
                 }
 
                 return res.json();
@@ -42,7 +41,6 @@ export class AppComponent extends React.Component {
                 _this.props.loginSuccessful(json.user);
             })
             .catch(err => {
-                alert(err);
                 console.error(err);
             });
     }
