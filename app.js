@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
