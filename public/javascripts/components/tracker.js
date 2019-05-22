@@ -2,9 +2,14 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 
-export class TrackerComponent extends React.Component {
+export class Tracker extends React.Component {
     render() {
-        // TODO: here
+        return (
+            <div className="tracker">
+                <input />
+                <i class="fas fa-play" />
+            </div>
+        );
     }
 }
 
