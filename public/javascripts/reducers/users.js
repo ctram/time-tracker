@@ -5,6 +5,9 @@ const usersReducer = createReducer(
     {
         SET_CURRENT_USER: (state, action) => {
             state.currentUser = action.payload;
+        },
+        LOG_OUT: state => {
+            state.currentUser = null;
         }
     }
 );
