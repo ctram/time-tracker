@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { LoginForm } from '../components/login-form';
 import { fetchPlus } from '../helpers/fetch-plus';
 
-import { setCurrentUser } from '../actions/login';
+import { setCurrentUser } from '../actions/session';
 
 import history from '../browser-history';
 
