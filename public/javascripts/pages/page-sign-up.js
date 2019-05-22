@@ -26,14 +26,14 @@ export class PageSignUp extends React.Component {
             })
             .then(json => {
                 if (status === 201) {
-                    alert(`User created ${json.user}`);
+                    console.log(`User created ${json.user}`);
                     return history.push('/login');
                 }
 
                 return Promise.reject(json.error.message || json.error.type);
             })
             .catch(err => {
-                alert(`There was an error signing up: ${err}`);
+                console.error(`There was an error signing up: ${err}`);
             });
     }
 
