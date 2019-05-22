@@ -18,7 +18,6 @@ import { setCurrentUser } from '../actions/session';
 import history from '../browser-history';
 
 export class AppComponent extends React.Component {
-
     componentDidMount() {
         if (this.props.currentUser) {
             return;
@@ -56,7 +55,7 @@ export class AppComponent extends React.Component {
                 <div className="pt-3">
                     <Route path="/login" component={PageLogin} />
                     <Route path="/sign-up" component={PageSignUp} />
-                    {(currentUser && <Route path="/home" exact component={PageTimeLog} />) || (
+                    {(currentUser && <Route path="/" exact component={PageTimeLog} />) || (
                         <Route path="/home" exact component={PageHome} />
                     )}
                 </div>
@@ -67,7 +66,7 @@ export class AppComponent extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.currentUser
+        currentUser: state.users.currentUser
     };
 };
 
