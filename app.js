@@ -10,7 +10,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const loginRouter = require('./routes/login');
+const sessionRouter = require('./routes/session');
 
 const sequelize = require('./db/index');
 
@@ -83,7 +83,7 @@ passport.deserializeUser((id, done) => {
 });
 
 app.use('/users', usersRouter);
-app.use('/login', loginRouter);
+app.use('/session', sessionRouter);
 app.use('/', indexRouter);
 
 // if request path does not match any routes, then catch as a
