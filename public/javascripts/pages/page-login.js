@@ -21,7 +21,7 @@ class PageLoginComponent extends React.Component {
     login({ email, password }) {
         let _this = this;
 
-        fetchPlus('http://localhost:3000/login', {
+        fetchPlus('http://localhost:3000/session', {
             method: 'POST',
             body: JSON.stringify({ email, password })
         })
@@ -33,15 +33,11 @@ class PageLoginComponent extends React.Component {
                 return res.json();
             })
             .then(json => {
-                alert('Successfully logged in.');
                 console.log(`User: ${json.user}`);
-
                 history.push('/home');
-
                 _this.props.loginSuccessful(json.user);
             })
             .catch(err => {
-                alert(err);
                 console.error(err);
                 _this.props.loginFailed(err);
             });

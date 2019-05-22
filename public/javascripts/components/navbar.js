@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../actions/session';
 import history from '../browser-history';
+import { fetchPlus } from '../helpers/fetch-plus';
 
 export class NavbarComponent extends React.Component {
     render() {
@@ -71,8 +72,21 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         logOut: () => {
-            dispatch(logOut());
-            history.push('/home');
+            fetchPlus('http://localhost:3000/session/logout', {
+                method: 'GET',
+            })
+                .then(res => {
+                    if (res.status === 200) {
+                        dispatch(logOut());
+                        history.push('/');
+                        return console.log('Successful logged out.')
+                    }
+
+                    throw Error(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         }
     };
 };
