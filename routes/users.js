@@ -26,10 +26,19 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/authenticate', (req, res, next) => {
-    console.log('check-current-user');
-    res.send('check current user!!!');
 
-    // TODO: send back user if logged in.
+    if (req.user) {
+
+        let user = {};
+
+        ['email', 'firstName', 'lastName', 'id'].forEach(attr => {
+            user[attr] = req.user.dataValues[attr];
+        })
+
+        return res.status(200).json({ user });
+    }
+
+    res.end();
 });
 
 module.exports = router;
