@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-router.post('/', function(req, res, next) {
+router.post('/', (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -23,6 +23,11 @@ router.post('/', function(req, res, next) {
         .catch(error => {
             next({ error });
         });
+});
+
+router.get('/authenticate', (req, res, next) => {
+    console.log('check-current-user');
+    res.send('check current user!!!');
 });
 
 module.exports = router;

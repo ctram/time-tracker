@@ -11,11 +11,40 @@ import { PageSignUp } from '../pages/page-sign-up';
 import { PageHome } from '../pages/page-home';
 import { PageTimeLog } from '../pages/page-time-log';
 
+import { fetchPlus } from '../helpers/fetch-plus';
+
+import { setCurrentUser } from '../actions/session';
+
 import history from '../browser-history';
 
 export class AppComponent extends React.Component {
     componentDidMount() {
         // TODO: ping server to get current user if current user is not available.
+
+        if (this.props.currentUser) {
+            return;
+        }
+
+        let _this = this;
+
+        fetchPlus('http://localhost:3000/users/authenticate', {
+            method: 'GET'
+        })
+            .then(res => {
+                if (res.status === 401) {
+                    throw Error('Not logged in.');
+                }
+
+                return res.json();
+            })
+            .then(json => {
+                console.log(`Current User: ${json.user}`);
+                _this.props.loginSuccessful(json.user);
+            })
+            .catch(err => {
+                alert(err);
+                console.error(err);
+            });
     }
 
     render() {
@@ -44,6 +73,17 @@ const mapStateToProps = state => {
     };
 };
 
-const App = connect(mapStateToProps)(AppComponent);
+const mapDispatchToProps = dispatch => {
+    return {
+        loginSuccessful: user => {
+            dispatch(setCurrentUser(user));
+        }
+    };
+};
+
+const App = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AppComponent);
 
 export { App };
