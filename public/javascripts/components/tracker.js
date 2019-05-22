@@ -5,8 +5,8 @@ import React from 'react';
 export class Tracker extends React.Component {
     render() {
         return (
-            <div className="tracker">
-                <input />
+            <div className="tracker d-flex align-items-center w-50">
+                <input className="form-control form-control-lg mr-3"/>
                 <i class="fas fa-play" />
             </div>
         );
