@@ -23,8 +23,7 @@ TimeEntry.init(
     }
   },
   {
-    sequelize
-    // options
+    sequelize, modelName: 'time-entry'
   }
 );
 

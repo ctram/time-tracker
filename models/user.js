@@ -24,8 +24,7 @@ User.init(
         }
     },
     {
-        sequelize
-        // options
+        sequelize, modelName: 'user'
     }
 );
 
