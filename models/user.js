@@ -2,30 +2,27 @@
 
 const sequelize = require('../db/index');
 const Sequelize = require('Sequelize');
-const Model = Sequelize.Model;
 
-class User extends Model {}
-User.init(
-    {
-        // attributes
-        firstName: {
-            type: Sequelize.STRING
-        },
-        lastName: {
-            type: Sequelize.STRING
-        },
-        email: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false
-        }
+const TimeEntry = require('./time-entry');
+
+const User = sequelize.define('User', {
+    // attributes
+    firstName: {
+        type: Sequelize.STRING
     },
-    {
-        sequelize, modelName: 'user'
+    lastName: {
+        type: Sequelize.STRING
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
-);
+});
+
+User.hasMany(TimeEntry);
 
 module.exports = User;
