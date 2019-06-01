@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-starter-kit';
 
-const trackerReducer = createReducer(
+const trackersReducer = createReducer(
     { isTrackerRunning: false },
     {
         startTracker: (state, action) => {
@@ -12,4 +12,4 @@ const trackerReducer = createReducer(
     }
 );
 
-export { trackerReducer };
+export { trackersReducer };
