@@ -18,6 +18,7 @@ import { setCurrentUser } from '../actions/session';
 import history from '../browser-history';
 
 export class AppComponent extends React.Component {
+
     componentDidMount() {
         if (this.props.currentUser) {
             return;
@@ -38,6 +39,18 @@ export class AppComponent extends React.Component {
             .then(json => {
                 console.log(`Current User: ${json.user}`);
                 _this.props.loginSuccessful(json.user);
+
+                return fetchPlus('http://localhost:3000/time-entries/running');
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+
+                throw Error('No running time entry');
+            })
+            .then(json => {
+                _this.props.setRunningTimeEntry(json.runningTimeEntry);
             })
             .catch(err => {
                 console.error(err);
