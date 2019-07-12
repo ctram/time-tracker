@@ -6,7 +6,7 @@ export class TrackerComponent extends React.Component {
         return (
             <div className="tracker d-flex align-items-center w-50">
                 <input className="form-control form-control-lg mr-3" />
-                <i class="fas fa-play" onClick={this.props.startTracking} /> //
+                <i className="fas fa-play" onClick={this.props.startTracking} /> //
             </div>
         );
     }
@@ -16,7 +16,7 @@ export class TrackerComponent extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isTrackerRunning: state.tracker.isTrackerRunning
+        isTrackerRunning: state.trackers.isTrackerRunning
     };
 };
 
