@@ -1,6 +1,6 @@
 # Time Tracker
 
-## Getting App Running
+## Get App Running
 
 ### Requirements
 - Postgres
