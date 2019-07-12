@@ -5,7 +5,22 @@ const Sequelize = require('Sequelize');
 
 const TimeEntry = require('./time-entry');
 
-const User = sequelize.define('User', {
+class User extends Sequelize.Model {
+    createTimeEntry(title) {
+        let timeEntry;
+
+        return TimeEntry.create({ title, startTime: new Date(), userId: this.id })
+            .then(_timeEntry => {
+                timeEntry = _timeEntry;
+                return this.update({ runningTimeEntryId: timeEntry.id })
+            })
+            .then(() => {
+                return timeEntry;
+            })
+    }
+};
+
+User.init({
     // attributes
     firstName: {
         type: Sequelize.STRING
@@ -20,8 +35,12 @@ const User = sequelize.define('User', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    runningTimeEntryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
-});
+}, { sequelize, modelName: 'user', tableName: 'Users' });
 
 User.hasMany(TimeEntry);
 
