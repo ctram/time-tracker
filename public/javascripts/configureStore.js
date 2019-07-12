@@ -6,7 +6,10 @@ import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
 const store = configureStore({
-    reducer: { users: usersReducer, trackers: trackersReducer },
+    reducer: {
+        users: usersReducer,
+        trackers: trackersReducer
+    },
     middleware,
     devTools: process.env.NODE_ENV !== 'production'
 });
