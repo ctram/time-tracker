@@ -18,6 +18,9 @@ const TimeEntry = sequelize.define('TimeEntry', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
+}, {
+    // define the table's name
+    tableName: 'TimeEntries'
 });
 
 module.exports = TimeEntry;
