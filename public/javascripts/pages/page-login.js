@@ -34,7 +34,7 @@ class PageLoginComponent extends React.Component {
             })
             .then(json => {
                 console.log(`User: ${json.user}`);
-                history.push('/home');
+                history.push('/');
                 _this.props.loginSuccessful(json.user);
             })
             .catch(err => {
